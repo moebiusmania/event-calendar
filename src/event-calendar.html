@@ -1,7 +1,7 @@
 <!-- Import Polymer -->
 <link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="../bower_components/core-pages/core-pages.html">
-<link rel="import" href="../bower_components/core-icon-button/core-icon-button.html">
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="./calendar-month.html">
 <link rel="import" href="./calendar-week.html">
 <link rel="import" href="./calendar-day.html">
@@ -19,11 +19,11 @@
 			display: block;
 		}
 		event-calendar /deep/ .header,
-		event-calendar /deep/ .monthHeader, 
-		event-calendar /deep/ .weekHeader, 
-		event-calendar /deep/ .dayHeader, 
+		event-calendar /deep/ .monthHeader,
+		event-calendar /deep/ .weekHeader,
+		event-calendar /deep/ .dayHeader,
 		event-calendar /deep/ .listHeader {
-			background-color: grey; 
+			background-color: grey;
 			color: white;
 		}
 
@@ -88,7 +88,7 @@
 					'month' : 0,
 					'week'	: 1,
 					'day'		: 2,
-					'list'	: 3 
+					'list'	: 3
 				};
 				this.view = 'month';
 			},

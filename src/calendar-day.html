@@ -1,5 +1,5 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="../bower_components/core-icon-button/core-icon-button.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="./calendar-day-base.html">
 <script src="../bower_components/moment/min/moment.min.js"></script>
 
@@ -67,7 +67,7 @@
 		Polymer({
 			created: function() {
 				this.startHour = 0;
-				this.date = moment(); 
+				this.date = moment();
 			},
 			ready: function() {
 				this.hours = [];
@@ -99,9 +99,9 @@
 					 investigated. It may derive from overeager recalculating of
 					 myEvents in calendar-day-base.  */
 				var topRow = this.shadowRoot.querySelector('#gridRow' + topHour);
-				if (!topRow) 
+				if (!topRow)
 					return;
-				
+
 				var top = topRow.offsetTop;
 
 				var botRow;
@@ -125,5 +125,3 @@
 		});
 	</script>
 </polymer-element>
-
-

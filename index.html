@@ -12,7 +12,8 @@
 
 		<!-- Importing Custom Elements -->
 		<link rel="import" href="src/event-calendar.html">
-		<link rel="import" href="bower_components/paper-dialog/paper-action-dialog.html">
+		<!-- <link rel="import" href="bower_components/paper-dialog/paper-action-dialog.html"> -->
+		<link rel="import" href="bower_components/paper-dialog/paper-dialog.html">
 
 		<style>
 			body {
@@ -36,7 +37,7 @@
 				<div>
 					<button on-tap="{{showAddEventDialog}}">add event</button>
 				</div>
-				<div>	
+				<div>
 					<button on-tap="{{removeEvents}}">remove all</button>
 				</div>
 				<div flex></div>
@@ -44,7 +45,7 @@
 			<event-calendar flex curDate="{{curDate}}" events="{{events}}" header?="{{header}}" startHour="8" view="month" on-event-calendar-error="{{eventCalendarError}}"></event-calendar>
 		</div>
 		<paper-action-dialog id="addEventDialog" heading="add event">
-			<div horizontal layout end> 
+			<div horizontal layout end>
 				<div vertical layout>
 					<div>title</div>
 					<div>venue</div>
@@ -86,7 +87,7 @@
 		demo.endTime = moment(demo.StartTime).add(1, 'h').format('HH:mm');
 
 		demo.showAddEventDialog = function() {
-			demo.$.addEventDialog.open(); 
+			demo.$.addEventDialog.open();
 		}
 
 		demo.addEvent = function() {
