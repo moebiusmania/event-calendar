@@ -24,53 +24,57 @@
 			}
 		</style>
 	</head>
-	<body fullbleed layout vertical>
-		<div layout horizontal justified>
+	<body>
+		<div>
 			<h1>event-calendar demo</h1>
 			<h2><a href="https://github.com/JoppeSchwartz/event-calendar">project home</a></h2>
 		</div>
-		<template id="demo" is="auto-binding">
-			<div horizontal layout center-justified>
-				<div flex></div>
-				<div class="centered">header: <input type="checkbox" checked="{{header}}"> | current date: {{formatDate(curDate)}}</div>
-				<div flex></div>
+		<template id="demo" is="dom-bind">
+			<div>
+				<div></div>
+				<div class="centered">header: <input type="checkbox" checked="{{header}}"> | current date: [[formatDate(curDate)]]</div>
+				<div></div>
 				<div>
-					<button on-tap="{{showAddEventDialog}}">add event</button>
+					<button on-tap="showAddEventDialog">add event</button>
 				</div>
 				<div>
-					<button on-tap="{{removeEvents}}">remove all</button>
+					<button on-tap="removeEvents">remove all</button>
 				</div>
 				<div flex></div>
 			</div>
-			<event-calendar flex curDate="{{curDate}}" events="{{events}}" header?="{{header}}" startHour="8" view="month" on-event-calendar-error="{{eventCalendarError}}"></event-calendar>
+			<event-calendar curDate="{{curDate}}" events="{{events}}" header="[[header]]" startHour="8" view="month" on-event-calendar-error="[[eventCalendarError]]"></event-calendar>
 		</div>
-		<paper-action-dialog id="addEventDialog" heading="add event">
-			<div horizontal layout end>
-				<div vertical layout>
-					<div>title</div>
-					<div>venue</div>
-					<div>start</div>
-					<div>end</div>
-				</div>
-				<div>&nbsp;</div>
-				<div vertical layout>
-					<div><input id="title" name="title" type="text" value="{{title}}"></div>
-					<div><input id="venue" name="venue" type="text" value="{{venue}}"></div>
-					<div><input id="startDate" name="startDate" type="date" value="{{startDate}}"></div>
-					<div><input id="endDate" name="endDate" type="date" value="{{endDate}}"></div>
-				</div>
-				<div vertical layout>
-					<div></div>
-					<div><input id="startTime" type="time" value="{{startTime}}"></div>
-					<div><input id="endTime" type="time" value="{{endTime}}"></div>
-				</div>
+		<paper-dialog id="addEventDialog">
+			<h2>add event</h2>
+			<table border="0">
+				<tr>
+					<td>title</td>
+					<td><input id="title" name="title" type="text" value="{{title}}"></td>
+				</tr>
+				<tr>
+					<td>venue</td>
+					<td><input id="venue" name="venue" type="text" value="{{venue}}"></td>
+				</tr>
+				<tr>
+					<td>start</td>
+					<td><input id="startDate" name="startDate" type="date" value="{{startDate}}"></td>
+				</tr>
+				<tr>
+					<td>end</td>
+					<td><input id="endDate" name="endDate" type="date" value="{{endDate}}"></td>
+				</tr>
+			</table>
+			<div >
+				<input id="startTime" type="time" value="{{startTime}}">
+				<input id="endTime" type="time" value="{{endTime}}"></div>
 			</div>
-			<div horizontal layout around-justified end>
-				<button raised affirmative on-tap="{{addEvent}}">add</button>
-				<button raised dismissive>cancel</button>
+			<div>
+				<button on-tap="addEvent">add</button>
+				<button on-tap="hideAddEventDialog">cancel</button>
 			</div>
-		</paper-action-dialog>
+		</paper-dialog>
 	</template>
+
 	<script>
 		var demo = document.querySelector('#demo');
 		demo.curDate = moment();
@@ -88,6 +92,10 @@
 
 		demo.showAddEventDialog = function() {
 			demo.$.addEventDialog.open();
+		}
+
+		demo.hideAddEventDialog = function() {
+			demo.$.addEventDialog.close();
 		}
 
 		demo.addEvent = function() {
